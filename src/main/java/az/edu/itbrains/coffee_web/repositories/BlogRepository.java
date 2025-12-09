@@ -5,5 +5,5 @@ import az.edu.itbrains.coffee_web.entities.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BlogRepository extends JpaRepository<Blog,Long> {
-    BlogResponseDto createBlog(BlogResponseDto blogResponseDto);
+//    BlogResponseDto createBlog(BlogResponseDto blogResponseDto);
 }

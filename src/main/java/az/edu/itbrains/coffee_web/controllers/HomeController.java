@@ -18,6 +18,8 @@ public class HomeController {
     private final AboutService aboutService;
     private final TestimonialsService testimonialsService;
     private final ModelMapper modelMapper;
+
+
     @GetMapping("/")
     public String home(Model model){
         AboutResponseDto aboutResponseDto = aboutService.getAboutInfo(1L);

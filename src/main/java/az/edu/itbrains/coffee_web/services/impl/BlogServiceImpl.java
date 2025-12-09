@@ -19,7 +19,9 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public BlogResponseDto getBlogId(Long id) {
         Blog blog = blogRepository.findById(id).orElse(null);
-
+        if(blog == null){
+            return null;
+        }
         return null;
     }
 
@@ -58,7 +60,6 @@ public class BlogServiceImpl implements BlogService {
                 savedBlog.getImageUrl(),
                 savedBlog.getCreatedAt()
         );
-
     }
 
     @Override
