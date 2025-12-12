@@ -1,28 +1,24 @@
 package az.edu.itbrains.coffee_web.controllers;
 
 import az.edu.itbrains.coffee_web.DTOs.response.AboutResponseDto;
-import az.edu.itbrains.coffee_web.DTOs.response.TestimonialsResponseDto;
+import az.edu.itbrains.coffee_web.repositories.AboutRepository;
 import az.edu.itbrains.coffee_web.services.AboutService;
-import az.edu.itbrains.coffee_web.services.TestimonialsService;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class HomeController {
+@RequestMapping("/about")
+public class AboutController {
     private final AboutService aboutService;
-    private final TestimonialsService testimonialsService;
-    private final ModelMapper modelMapper;
 
-
-    @GetMapping("/index")
-    public String home(Model model){
-        return "index.html";
+    @GetMapping
+    public String about(Model model){
+        AboutResponseDto aboutResponseDto = aboutService.getAboutInfo();
+        model.addAttribute("aboutInfo",aboutResponseDto);
+        return "about";
     }
-
 }

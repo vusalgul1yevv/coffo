@@ -8,6 +8,5 @@ public interface AboutService {
     AboutResponseDto createBlog(BlogResponseDto blogResponseDto);
     AboutResponseDto updateBlog(Long id,BlogResponseDto blogResponseDto);
     void deleteBlog(Long id);
-
-    AboutResponseDto getAboutInfo(long l);
+    AboutResponseDto getAboutInfo();
 }

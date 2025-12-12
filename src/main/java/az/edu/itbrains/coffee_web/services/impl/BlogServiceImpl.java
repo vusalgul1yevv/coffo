@@ -1,11 +1,13 @@
 package az.edu.itbrains.coffee_web.services.impl;
 
+import az.edu.itbrains.coffee_web.DTOs.response.AboutResponseDto;
 import az.edu.itbrains.coffee_web.DTOs.response.BlogResponseDto;
 import az.edu.itbrains.coffee_web.entities.Blog;
 import az.edu.itbrains.coffee_web.repositories.AboutRepository;
 import az.edu.itbrains.coffee_web.repositories.BlogRepository;
 import az.edu.itbrains.coffee_web.services.BlogService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BlogServiceImpl implements BlogService {
     private final BlogRepository blogRepository;
+    private final ModelMapper modelMapper;
 
     @Override
     public BlogResponseDto getBlogId(Long id) {
@@ -32,13 +35,7 @@ public class BlogServiceImpl implements BlogService {
         blog.setDescription(blogResponseDto.getDescription());
         blog.setImageUrl(blogResponseDto.getImageUrl());
         Blog savedBlog = blogRepository.save(blog);
-        return new BlogResponseDto(
-                savedBlog.getId(),
-                savedBlog.getTitle(),
-                savedBlog.getDescription(),
-                savedBlog.getImageUrl(),
-                savedBlog.getCreatedAt()
-        );
+        return modelMapper.map(savedBlog, BlogResponseDto.class);
 
     }
 
@@ -48,18 +45,11 @@ public class BlogServiceImpl implements BlogService {
         if(blog == null){
             return null;
         }
-
         blog.setTitle(blogResponseDto.getTitle());
         blog.setDescription(blogResponseDto.getDescription());
         blog.setImageUrl(blogResponseDto.getImageUrl());
         Blog savedBlog = blogRepository.save(blog);
-        return new BlogResponseDto(
-                savedBlog.getId(),
-                savedBlog.getTitle(),
-                savedBlog.getDescription(),
-                savedBlog.getImageUrl(),
-                savedBlog.getCreatedAt()
-        );
+        return modelMapper.map(savedBlog, BlogResponseDto.class);
     }
 
     @Override

@@ -19,7 +19,7 @@ public class MenuItem {
 
     private String title;
     private String description;
-    private Double price;
+//    private Double price;
 
     @Column(name = "image_url")
     private String imageUrl;

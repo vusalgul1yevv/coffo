@@ -1,9 +1,5 @@
 package az.edu.itbrains.coffee_web.DTOs.response;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuItemResponse {
+public class MenuItemResponseDto {
     private Long id;
     private String title;
     private String description;
